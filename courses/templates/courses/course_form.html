@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h2>{% if course %}Edit{% else %}Add{% endif %} Course</h2>
+<form method="post" action="{% if course %}{% url 'course_edit' course.id %}{% else %}{% url 'course_add' %}{% endif %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+{% endblock %}

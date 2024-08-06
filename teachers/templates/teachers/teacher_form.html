@@ -1,0 +1,11 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h2>{% if teacher %}Edit{% else %}Add{% endif %} Teacher</h2>
+<form method="post" action="{% if teacher %}{% url 'teacher_edit' teacher.id %}{% else %}{% url 'teacher_add' %}{% endif %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+{% endblock %}
